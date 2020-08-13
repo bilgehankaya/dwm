@@ -197,6 +197,7 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,		XK_x,		togglegaps,	{0} },
 	{ MODKEY,			XK_c,		spawn,		SHCMD("dmenuconfig") },
 	{ MODKEY|ShiftMask,		XK_c,		spawn,		SHCMD("st -e calcurse -D ~/.config/calcurse") },
+	{MODKEY|ShiftMask, 		XK_v,		zoom,		{0}},
 	/* V is automatically bound above in STACKKEYS */
 	{ MODKEY,			XK_b,		togglebar,	{0} },
 	{ MODKEY|ShiftMask,		XK_b,		spawn,		SHCMD("dmenubooks") },
