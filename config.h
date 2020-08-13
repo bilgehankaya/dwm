@@ -12,11 +12,11 @@ static const int smartgaps          = 0;        /* 1 means no outer gap when the
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 static const char *fonts[]          = { "JetBrains Mono Medium:pixelsize=14:antialias=true:autohint=true",
-	"JoyPixels:pixelsize=14:antialias=true:autohint=true",
-	"FontAwesome5Free:pixelsize=14:antialias=true:autohint=true",
-	"FontAwesome5Brands:pixelsize=15:antialias=true:autohint=true",
+	"JoyPixels:pixelsize=13:antialias=true:autohint=true",
+	"FontAwesome5Free:pixelsize=13:antialias=true:autohint=true",
+	"FontAwesome5Brands:pixelsize=14:antialias=true:autohint=true",
 	"JoyPixels:pixelsize=10:antialias=true:autohint=true",
-	"Font Awesome 5 Free:style=Solid:pixelsize=12:antialias=true:autohint=true" };
+	"Font Awesome 5 Free:style=Solid:pixelsize=12:antialias=true:autohint=true"};
 static char dmenufont[]             = "JetBrainsMono:size=12:style=Medium";
 static char normbgcolor[]           = "#000000";
 /* static char normbgcolor[]           = "#222222"; */
@@ -58,7 +58,8 @@ static const Rule rules[] = {
 	{ "discord",  NULL,       NULL,          1 << 6,       0,           0,         0,        -1 },
 	{ "Gpick",    NULL,       NULL,       	    0,       	  1,           0,         0,        -1 },
 	{ "Pavucontrol",    NULL,       NULL,       	    0,       	  1,           0,         0,        -1 },
-	{ "st-256color",      "st-256color",     NULL,           	    0,            0,           1,         0,        -1 },
+	{ "st-256color",    NULL,     NULL,           	    0,            0,           1,         0,        -1 },
+	{ "Alacritty",      NULL,     NULL,           	    0,            0,           1,         0,        -1 },
 	{ NULL,      NULL,     "Event Tester", 	    0,            0,           0,         1,        -1 }, /* xev */
 	{ NULL,      "spterm",    NULL,       	    SPTAG(0),     1,           1,         0,        -1 },
 	{ NULL,      "spcalc",    NULL,       	    SPTAG(1),     1,           1,         0,        -1 },
@@ -145,13 +146,15 @@ static Key keys[] = {
 	//{ MODKEY|ShiftMask,		XK_q,		spawn,		SHCMD("sysact") },
 	{ MODKEY,			XK_w,		spawn,		SHCMD("$BROWSER") },
 	{ MODKEY|ShiftMask,		XK_w,		spawn,		SHCMD("st -e nmtui") },
-	{ MODKEY,			XK_e,		spawn,		SHCMD("~/.config/polybar/scripts/toggle-vpn") },
+	{ MODKEY,			XK_e,		spawn,		SHCMD("vpn --toggle") },
 	{ MODKEY|ShiftMask,		XK_e,		spawn,		SHCMD("st -e abook -C ~/.config/abook/abookrc --datafile ~/.config/abook/addressbook") },
 	{ MODKEY,			XK_r,		spawn,		SHCMD("st -e ranger") },
 	{ MODKEY|ShiftMask,		XK_r,		spawn,		SHCMD("st -e htop") },
 	//{ MODKEY,			XK_t,		setlayout,	{.v = &layouts[0]} }, /* tile */
+	{ MODKEY,			XK_t,		spawn,		SHCMD("st -e cointop") },
 	//{ MODKEY|ShiftMask,		XK_t,		setlayout,	{.v = &layouts[1]} }, /* bstack */
 	//{ MODKEY,			XK_y,		setlayout,	{.v = &layouts[2]} }, /* spiral */
+	{MODKEY, 			XK_y,		cyclelayout,    {.i = +1 } },
 	//{ MODKEY|ShiftMask,		XK_y,		setlayout,	{.v = &layouts[3]} }, /* dwindle */
 	{ MODKEY,			XK_u,	togglescratch,	{.ui = 0}},
 	//{ MODKEY,			XK_u,		setlayout,	{.v = &layouts[4]} }, /* deck */
@@ -170,7 +173,7 @@ static Key keys[] = {
 	/* { MODKEY|ShiftMask,		XK_backslash,		spawn,		SHCMD("") }, */
 	{ MODKEY,			XK_a,		spawn,		SHCMD("st -e pulsemixer") },
 	{ MODKEY|ShiftMask,		XK_a,		spawn,		SHCMD("pavucontrol") },
-	{ MODKEY,			XK_s,		cyclelayout,    {.i = +1 } },
+	{ MODKEY,			XK_s,		togglefloating,	{0}  },
 	{ MODKEY|ShiftMask,		XK_s,		togglesticky,	{0} },
 	{ MODKEY,			XK_d,		spawn,          {.v = dmenucmd } },
 	{ MODKEY|ShiftMask,		XK_d,		togglegaps,	{0}  },
