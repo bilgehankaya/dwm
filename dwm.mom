@@ -1,0 +1,165 @@
+.de LI
+.LIST
+.SHIFT_LIST 10p
+..
+.PARA_SPACE 1m
+.TITLE "\s+(10DWM KEYBINDINGS\s0"
+.AUTHOR "\s+5Bilgehan Kaya\s0"
+.DOCTYPE    DEFAULT
+.COPYSTYLE  FINAL
+.PRINTSTYLE TYPESET
+.PT_SIZE 12
+.START
+.HEADING 2 "Programs"
+.LI
+.ITEM
+\f(CWMod+w\fP \(en Launch browser
+.ITEM
+\f(CWMod+W\fP \(en Launch nmtui (network managment)
+.ITEM
+\f(CWMod+e\fP \(en Toggle vpn
+.ITEM
+\f(CWMod+r\fP \(en Launch lf (ranger like file manager)
+.ITEM
+\f(CWMod+R\fP \(en Launch htop (ram usage etc.)
+.ITEM
+\f(CWMod+a\fP \(en Launch pulsemixer (volume management)
+.ITEM
+\f(CWMod+A\fP \(en Launch pavucontrol (volume management)
+.ITEM
+\f(CWMod+d\fP \(en Launch dmenu (menu for anything)
+.ITEM
+\f(CWMod+Return\fP \(en Launch default terminal
+.ITEM
+\f(CWMod+(Shift+Return|u)\fP \(en Launch strachpad terminal
+.ITEM
+\f(CWMod+'\fP \(en Launch strachpad calculator
+.ITEM
+\f(CWMod+c\fP \(en Dmenu for edit config files
+.ITEM
+\f(CWMod+C\fP \(en Launch calcurse (time management, to-do)
+.ITEM
+\f(CWMod+N\fP \(en Launch vimwiki (to create notes)
+.ITEM
+\f(CWMod+n\fP \(en Launch newsboat (terminal RSS feeder)
+.ITEM
+\f(CWMod+m\fP \(en Launch ncmpcpp (terminal music player)
+.ITEM
+\f(CWMod+t\fP \(en Launch cointop (terminal crypto price)
+.ITEM
+\f(CWMod+B\fP \(en Launch book menu
+.LIST OFF
+
+.HEADING 2 "Dwm Rules"
+.PP
+Misc dwm rules and functions
+.LI
+.ITEM
+\f(CWMod+q\fP \(en Kill a node
+.ITEM
+\f(CWMod+D\fP \(en Toggle gaps
+.ITEM
+\f(CWMod+z/Z\fP \(en Increase, decrease gaps
+.ITEM
+\f(CWMod+Space\fP \(en Make focused window master window
+.ITEM
+\f(CWMod+j/k\fP \(en Cycle between windows
+.ITEM
+\f(CWMod+h/l\fP \(en Make master window bigger/smaller
+.ITEM
+\f(CWMod+J/K\fP \(en Swap upper/lower window with current window
+.ITEM
+\f(CWMod+(s|Shift+Space)\fP \(en Toggle a window between floating and tiled mode
+.ITEM
+\f(CWMod+S\fP \(en Toggle sticky
+.ITEM
+\f(CWMod+o/O\fP \(en Increase/decrease number of master windows
+.ITEM
+\f(CWMod+f\fP \(en Make a node fullscreen
+.ITEM
+\f(CWMod+x\fP \(en Default window gap
+.ITEM
+\f(CWMod+y\fP \(en Cycle between dwm layouts
+.ITEM
+\f(CWMod+b\fP \(en Toggle bar
+.ITEM
+\f(CWMod+v\fP \(en Focus to master window
+.LIST OFF
+
+.HEADING 2 "System - Function Keys"
+.LI
+.ITEM
+\f(CWMod+F1\fP \(en Show this document
+.ITEM
+\f(CWMod+F2\fP \(en Restart dwm or dwmblocks
+.ITEM
+\f(CWMod+F3\fP \(en Select display
+.ITEM
+\f(CWMod+F4\fP \(en Edit ~/.local/bin scripts with dmenu selection
+.ITEM
+\f(CWMod+F5\fP \(en
+.ITEM
+\f(CWMod+F6\fP \(en Launch transmisson daemon and tremc (torrent)
+.ITEM
+\f(CWMod+F7\fP \(en Toggle on/off tranmission daemon
+.ITEM
+\f(CWMod+F8\fP \(en Check mail
+.ITEM
+\f(CWMod+F9\fP \(en Mount USB/Android
+.ITEM
+\f(CWMod+F10\fP \(en Unmount USB/Android
+.ITEM
+\f(CWMod+F11\fP \(en Toggle webcam view
+.ITEM
+\f(CWMod+F12\fP \(en Screencast dmenu
+.ITEM
+\f(CWMod+Insert\fP \(en Clipboard menu
+.ITEM
+\f(CWMod+`\fP \(en Select emoji and copy to clipboard
+.ITEM
+\f(CWPrintScreen\fP \(en Screenshot of a desktop
+.ITEM
+\f(CWMod+PrintScreen\fP \(en Other screenshot tools
+.ITEM
+\f(CWMod+Shitt+BackSpace\fP \(en Reboot, restart, halt, screensaver, kill X
+.LIST OFF
+
+.HEADING 2 "Audio"
+.LI
+.ITEM
+\f(CWMod+.\fP \(en Next track
+.ITEM
+\f(CWMod+,\fP \(en Previous track
+.ITEM
+\f(CWMod+<\fP \(en Restart track
+.ITEM
+\f(CWMod+>\fP \(en Toggle playlist looping
+.ITEM
+\f(CWMod+p\fP \(en Toggle pause
+.ITEM
+\f(CWMod+p\fP \(en Force pause music player daemon and all mpv videos
+.ITEM
+\f(CWMod+M\fP \(en Mute all audio
+.ITEM
+\f(CWMod+-\fP \(en Decrease volume (holding shift increases amount)
+.ITEM
+\f(CWMod++\fP \(en Increase volume (holding shift increases amount)
+.ITEM
+\f(CWMod+[\fP \(en Back 10 seconds (holding shift moves by one minute)
+.ITEM
+\f(CWMod+]\fP \(en Forward 10 seconds (holding shift moves by one minute)
+.LIST OFF
+
+.HEADING 2 "Workspaces"
+.LI
+.ITEM
+\f(CWMod+(Number)\fP \(en Go to that number tag
+.ITEM
+\f(CWMod+Shift+(Number)\fP \(en Send window to that tag
+.ITEM
+\f(CWMod+Tab\fP \(en Go to previous tag (may also use \f(CW\\\fP for Tab)
+.ITEM
+\f(CWMod+g\fP \(en Go to left tag (hold shift to send window there)
+.ITEM
+\f(CWMod+;\fP \(en Go to right tag (hold shift to send window there)
+.LIST OFF
