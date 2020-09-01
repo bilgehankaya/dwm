@@ -11,9 +11,10 @@ static const int swallowfloating    = 0;        /* 1 means swallow floating wind
 static const int smartgaps          = 0;        /* 1 means no outer gap when there is only one window */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
-static const char *fonts[]          = { "JetBrains Mono Medium:pixelsize=14:antialias=true:autohint=true",
-	"JoyPixels:pixelsize=13:antialias=true:autohint=true",
-	"FontAwesome5Free:pixelsize=13:antialias=true:autohint=true",
+static const char *fonts[]          = {
+	"JetBrains Mono Medium:pixelsize=14:antialias=true:autohint=true",
+	"JoyPixels:pixelsize=11:antialias=true:autohint=true",
+	"FontAwesome5Free:pixelsize=12:antialias=true:autohint=true",
 	"FontAwesome5Brands:pixelsize=14:antialias=true:autohint=true",
 	"JoyPixels:pixelsize=10:antialias=true:autohint=true",
 	"Font Awesome 5 Free:style=Solid:pixelsize=12:antialias=true:autohint=true"};
@@ -143,14 +144,14 @@ static Key keys[] = {
 	{ MODKEY,			XK_Tab,		view,		{0} },
 	/* { MODKEY|ShiftMask,		XK_Tab,		spawn,		SHCMD("") }, */
 	{ MODKEY,			XK_q,		killclient,	{0} },
-	//{ MODKEY|ShiftMask,		XK_q,		spawn,		SHCMD("sysact") },
+	/* { MODKEY|ShiftMask,		XK_q,		spawn,		SHCMD("sysact") }, */
 	{ MODKEY,			XK_w,		spawn,		SHCMD("$BROWSER") },
 	{ MODKEY|ShiftMask,		XK_w,		spawn,		SHCMD("st -e nmtui") },
 	{ MODKEY,			XK_e,		spawn,		SHCMD("vpn --toggle") },
 	{ MODKEY|ShiftMask,		XK_e,		spawn,		SHCMD("st -e abook -C ~/.config/abook/abookrc --datafile ~/.config/abook/addressbook") },
 	{ MODKEY,			XK_r,		spawn,		SHCMD("st -e lf") },
 	{ MODKEY|ShiftMask,		XK_r,		spawn,		SHCMD("st -e htop") },
-	//{ MODKEY,			XK_t,		setlayout,	{.v = &layouts[0]} }, /* tile */
+	/* { MODKEY,			XK_t,		setlayout,	{.v = &layouts[0]} }, /1* tile *1/ */
 	{ MODKEY,			XK_t,		spawn,		SHCMD("st -e cointop") },
 	//{ MODKEY|ShiftMask,		XK_t,		setlayout,	{.v = &layouts[1]} }, /* bstack */
 	//{ MODKEY,			XK_y,		setlayout,	{.v = &layouts[2]} }, /* spiral */
@@ -160,7 +161,7 @@ static Key keys[] = {
 	//{ MODKEY,			XK_u,		setlayout,	{.v = &layouts[4]} }, /* deck */
 	//{ MODKEY|ShiftMask,		XK_u,		setlayout,	{.v = &layouts[5]} }, /* monocle */
 	//{ MODKEY,			XK_i,		setlayout,	{.v = &layouts[6]} }, /* centeredmaster */
-	// MODKEY|ShiftMask,		XK_i,		setlayout,	{.v = &layouts[7]} }, /* centeredfloatingmaster */
+	//{ MODKEY|ShiftMask,		XK_i,		setlayout,	{.v = &layouts[7]} }, /* centeredfloatingmaster */
 	{ MODKEY,			XK_o,		incnmaster,     {.i = +1 } },
 	{ MODKEY|ShiftMask,		XK_o,		incnmaster,     {.i = -1 } },
 	{ MODKEY,			XK_p,			spawn,		SHCMD("mpc toggle") },
@@ -226,7 +227,7 @@ static Key keys[] = {
 	{ MODKEY,			XK_F2,		spawn,		SHCMD("dwm_reload") },
 	{ MODKEY,			XK_F3,		spawn,		SHCMD("displayselect") },
 	{ MODKEY,			XK_F4,		spawn,		SHCMD("dmenuscripts") },
-	/* { MODKEY,			XK_F5,		xrdb,		{.v = NULL } }, */
+	{ MODKEY,			XK_F5,		spawn,		SHCMD("virtualbox") },
 	{ MODKEY,			XK_F6,		spawn,		SHCMD("torwrap") },
 	{ MODKEY,			XK_F7,		spawn,		SHCMD("td-toggle") },
 	{ MODKEY,			XK_F8,		spawn,		SHCMD("mailsync") },

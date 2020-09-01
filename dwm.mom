@@ -97,7 +97,7 @@ Misc dwm rules and functions
 .ITEM
 \f(CWMod+F4\fP \(en Edit ~/.local/bin scripts with dmenu selection
 .ITEM
-\f(CWMod+F5\fP \(en
+\f(CWMod+F5\fP \(en Launch virtualbox
 .ITEM
 \f(CWMod+F6\fP \(en Launch transmisson daemon and tremc (torrent)
 .ITEM
