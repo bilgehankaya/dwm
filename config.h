@@ -24,9 +24,10 @@ static char normbgcolor[]           = "#000000";
 static char normbordercolor[]       = "#4C566A";
 static char normfgcolor[]           = "#eeeeee";
 static char selfgcolor[]            = "#eeeeee";
-static char selbordercolor[]        = "#BF616A";
+static char selbordercolor[]        = "#da1657";
+/* static char selbordercolor[]        = "#BF616A"; */
 /* static char selbordercolor[]        = "#eceff4"; */
-static char selbgcolor[]            = "#BF616A";
+static char selbgcolor[]            = "#da1657";
 /* static char selbgcolor[]            = "#005577"; */
 static char *colors[][3] = {
        /*               fg           bg           border   */
@@ -274,6 +275,7 @@ static Key keys[] = {
 	{ 0, XF86XK_MonBrightnessDown,	spawn,		SHCMD("xbacklight -dec 15") },
 	{ MODKEY|ControlMask,		XK_comma,  cyclelayout,    {.i = -1 } },
 	{ MODKEY|ControlMask,           XK_period, cyclelayout,    {.i = +1 } },
+	{ MODKEY,          		XK_slash,  spawn,SHCMD("showmusic")  },
 
 	/* { MODKEY|Mod4Mask,              XK_h,      incrgaps,       {.i = +1 } }, */
 	/* { MODKEY|Mod4Mask,              XK_l,      incrgaps,       {.i = -1 } }, */
