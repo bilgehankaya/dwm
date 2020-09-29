@@ -1,22 +1,12 @@
 /* Key binding functions */
 static void defaultgaps(const Arg *arg);
 static void incrgaps(const Arg *arg);
-/* static void incrigaps(const Arg *arg); */
-/* static void incrogaps(const Arg *arg); */
-/* static void incrohgaps(const Arg *arg); */
-/* static void incrovgaps(const Arg *arg); */
-/* static void incrihgaps(const Arg *arg); */
-/* static void incrivgaps(const Arg *arg); */
 static void togglegaps(const Arg *arg);
 
 /* Layouts */
-static void bstack(Monitor *m);
 static void centeredmaster(Monitor *m);
-static void centeredfloatingmaster(Monitor *m);
-static void deck(Monitor *m);
 static void dwindle(Monitor *m);
 static void fibonacci(Monitor *m, int s);
-static void spiral(Monitor *m);
 static void tile(Monitor *);
 
 /* Internals */
@@ -65,72 +55,6 @@ incrgaps(const Arg *arg)
 	);
 }
 
-/* static void */
-/* incrigaps(const Arg *arg) */
-/* { */
-/* 	setgaps( */
-/* 		selmon->gappoh, */
-/* 		selmon->gappov, */
-/* 		selmon->gappih + arg->i, */
-/* 		selmon->gappiv + arg->i */
-/* 	); */
-/* } */
-
-/* static void */
-/* incrogaps(const Arg *arg) */
-/* { */
-/* 	setgaps( */
-/* 		selmon->gappoh + arg->i, */
-/* 		selmon->gappov + arg->i, */
-/* 		selmon->gappih, */
-/* 		selmon->gappiv */
-/* 	); */
-/* } */
-
-/* static void */
-/* incrohgaps(const Arg *arg) */
-/* { */
-/* 	setgaps( */
-/* 		selmon->gappoh + arg->i, */
-/* 		selmon->gappov, */
-/* 		selmon->gappih, */
-/* 		selmon->gappiv */
-/* 	); */
-/* } */
-
-/* static void */
-/* incrovgaps(const Arg *arg) */
-/* { */
-/* 	setgaps( */
-/* 		selmon->gappoh, */
-/* 		selmon->gappov + arg->i, */
-/* 		selmon->gappih, */
-/* 		selmon->gappiv */
-/* 	); */
-/* } */
-
-/* static void */
-/* incrihgaps(const Arg *arg) */
-/* { */
-/* 	setgaps( */
-/* 		selmon->gappoh, */
-/* 		selmon->gappov, */
-/* 		selmon->gappih + arg->i, */
-/* 		selmon->gappiv */
-/* 	); */
-/* } */
-
-/* static void */
-/* incrivgaps(const Arg *arg) */
-/* { */
-/* 	setgaps( */
-/* 		selmon->gappoh, */
-/* 		selmon->gappov, */
-/* 		selmon->gappih, */
-/* 		selmon->gappiv + arg->i */
-/* 	); */
-/* } */
-
 static void
 getgaps(Monitor *m, int *oh, int *ov, int *ih, int *iv, unsigned int *nc)
 {
@@ -176,58 +100,6 @@ getfacts(Monitor *m, int msize, int ssize, float *mf, float *sf, int *mr, int *s
 
 /***
  * Layouts
- */
-
-/*
- * Bottomstack layout + gaps
- * https://dwm.suckless.org/patches/bottomstack/
- */
-
-static void
-bstack(Monitor *m)
-{
-	unsigned int i, n;
-	int mx = 0, my = 0, mh = 0, mw = 0;
-	int sx = 0, sy = 0, sh = 0, sw = 0;
-	float mfacts, sfacts;
-	int mrest, srest;
-	Client *c;
-
-	int oh, ov, ih, iv;
-	getgaps(m, &oh, &ov, &ih, &iv, &n);
-
-	if (n == 0)
-		return;
-
-	sx = mx = m->wx + ov;
-	sy = my = m->wy + oh;
-	sh = mh = m->wh - 2*oh;
-	mw = m->ww - 2*ov - iv * (MIN(n, m->nmaster) - 1);
-	sw = m->ww - 2*ov - iv * (n - m->nmaster - 1);
-
-	if (m->nmaster && n > m->nmaster) {
-		sh = (mh - ih) * (1 - m->mfact);
-		mh = (mh - ih) * m->mfact;
-		sx = mx;
-		sy = my + mh + ih;
-	}
-
-	getfacts(m, mw, sw, &mfacts, &sfacts, &mrest, &srest);
-
-	for (i = 0, c = nexttiled(m->clients); c; c = nexttiled(c->next), i++) {
-		if (i < m->nmaster) {
-			resize(c, mx, my, (mw / mfacts) + (i < mrest ? 1 : 0) - (2*c->bw), mh - (2*c->bw), 0);
-			mx += WIDTH(c) + iv;
-		} else {
-			resize(c, sx, sy, (sw / sfacts) + ((i - m->nmaster) < srest ? 1 : 0) - (2*c->bw), sh - (2*c->bw), 0);
-			sx += WIDTH(c) + iv;
-		}
-	}
-}
-
-/*
- * Centred master layout + gaps
- * https://dwm.suckless.org/patches/centeredmaster/
  */
 
 void
@@ -315,113 +187,6 @@ centeredmaster(Monitor *m)
 	}
 }
 
-void
-centeredfloatingmaster(Monitor *m)
-{
-	unsigned int i, n;
-	float mfacts, sfacts;
-	int mrest, srest;
-	int mx = 0, my = 0, mh = 0, mw = 0;
-	int sx = 0, sy = 0, sh = 0, sw = 0;
-	Client *c;
-
-	float mivf = 1.0; // master inner vertical gap factor
-	int oh, ov, ih, iv;
-	getgaps(m, &oh, &ov, &ih, &iv, &n);
-
-	if (n == 0)
-		return;
-
-	sx = mx = m->wx + ov;
-	sy = my = m->wy + oh;
-	sh = mh = m->wh - 2*oh;
-	mw = m->ww - 2*ov - iv*(n - 1);
-	sw = m->ww - 2*ov - iv*(n - m->nmaster - 1);
-
-	if (m->nmaster && n > m->nmaster) {
-		mivf = 0.8;
-		/* go mfact box in the center if more than nmaster clients */
-		if (m->ww > m->wh) {
-			mw = m->ww * m->mfact - iv*mivf*(MIN(n, m->nmaster) - 1);
-			mh = m->wh * 0.9 - 2*oh;
-		} else {
-			mw = m->ww * 0.9 - iv*mivf*(MIN(n, m->nmaster) - 1);
-			mh = m->wh * m->mfact;
-		}
-		mx = m->wx + (m->ww - mw) / 2;
-		my = m->wy + (m->wh - mh) / 2;
-
-		sx = m->wx + ov;
-		sy = m->wy + oh;
-		sh = m->wh - 2*oh;
-	}
-
-	getfacts(m, mw, sw, &mfacts, &sfacts, &mrest, &srest);
-
-	for (i = 0, c = nexttiled(m->clients); c; c = nexttiled(c->next), i++)
-		if (i < m->nmaster) {
-			/* nmaster clients are stacked horizontally, in the center of the screen */
-			resize(c, mx, my, (mw / mfacts) + (i < mrest ? 1 : 0) - (2*c->bw), mh - (2*c->bw), 0);
-			mx += WIDTH(c) + iv*mivf;
-		} else {
-			/* stack clients are stacked horizontally */
-			resize(c, sx, sy, (sw / sfacts) + ((i - m->nmaster) < srest ? 1 : 0) - (2*c->bw), sh - (2*c->bw), 0);
-			sx += WIDTH(c) + iv;
-		}
-}
-
-/*
- * Deck layout + gaps
- * https://dwm.suckless.org/patches/deck/
- */
-
-static void
-deck(Monitor *m)
-{
-	unsigned int i, n;
-	int mx = 0, my = 0, mh = 0, mw = 0;
-	int sx = 0, sy = 0, sh = 0, sw = 0;
-	float mfacts, sfacts;
-	int mrest, srest;
-	Client *c;
-
-	int oh, ov, ih, iv;
-	getgaps(m, &oh, &ov, &ih, &iv, &n);
-
-	if (n == 0)
-		return;
-
-	sx = mx = m->wx + ov;
-	sy = my = m->wy + oh;
-	sh = mh = m->wh - 2*oh - ih * (MIN(n, m->nmaster) - 1);
-	sw = mw = m->ww - 2*ov;
-
-	if (m->nmaster && n > m->nmaster) {
-		sw = (mw - iv) * (1 - m->mfact);
-		mw = (mw - iv) * m->mfact;
-		sx = mx + mw + iv;
-		sh = m->wh - 2*oh;
-	}
-
-	getfacts(m, mh, sh, &mfacts, &sfacts, &mrest, &srest);
-
-	if (n - m->nmaster > 0) /* override layout symbol */
-		snprintf(m->ltsymbol, sizeof m->ltsymbol, "D %d", n - m->nmaster);
-
-	for (i = 0, c = nexttiled(m->clients); c; c = nexttiled(c->next), i++)
-		if (i < m->nmaster) {
-			resize(c, mx, my, mw - (2*c->bw), (mh / mfacts) + (i < mrest ? 1 : 0) - (2*c->bw), 0);
-			my += HEIGHT(c) + ih;
-		} else {
-			resize(c, sx, sy, sw - (2*c->bw), sh - (2*c->bw), 0);
-		}
-}
-
-/*
- * Fibonacci layout + gaps
- * https://dwm.suckless.org/patches/fibonacci/
- */
-
 static void
 fibonacci(Monitor *m, int s)
 {
@@ -489,16 +254,6 @@ dwindle(Monitor *m)
 {
 	fibonacci(m, 1);
 }
-
-static void
-spiral(Monitor *m)
-{
-	fibonacci(m, 0);
-}
-
-/*
- * Default tile layout + gaps
- */
 
 static void
 tile(Monitor *m)
