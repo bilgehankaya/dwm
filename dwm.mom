@@ -13,7 +13,7 @@
 .HEADING 2 "Programs"
 .LI
 .ITEM
-\f(CWMod+w\fP \(en Launch browser
+\f(CWMod+w\fP \(en Launch browser (brave is default)
 .ITEM
 \f(CWMod+W\fP \(en Launch nmtui (network managment)
 .ITEM
