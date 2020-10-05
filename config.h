@@ -1,7 +1,7 @@
 /* See LICENSE file for copyright and license details. */
 
 /* Default terminal emulator */
-#define TERMINAL "st"
+#define TERMINAL "alacritty"
 
 /* appearance */
 static const unsigned int borderpx  = 3;        /* border pixel of windows */
@@ -38,7 +38,7 @@ typedef struct {
 	const char *name;
 	const void *cmd;
 } Sp;
-const char *spcmd1[] = {"st", "-n", "spterm","-g", "80x15", NULL };
+const char *spcmd1[] = {"st", "-n", "spterm","-g", "80x20", NULL };
 const char *spcmd2[] = {"st", "-n", "spcalc", "-f", "monospace:size=16", "-g", "50x20", "-e", "bc", "-lq", NULL };
 static Sp scratchpads[] = {
 	/* name          cmd  */
@@ -199,18 +199,18 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,		XK_Page_Down,	shifttag,	{ .i = +1 } },
 	{ MODKEY,			XK_Insert,	spawn,		SHCMD("notify-send \"📋 Clipboard contents:\" \"$(xclip -o -selection clipboard)\"") },
 
-	{ MODKEY,			XK_F1,		spawn,		SHCMD("groff -mom ~/.local/src/dwm/dwm.mom -Tpdf | zathura -") },
+	{ MODKEY,			XK_F1,		spawn,		SHCMD("dmenumanuals") },
 	{ MODKEY,			XK_F2,		spawn,		SHCMD("reloaddwm") },
 	{ MODKEY,			XK_F3,		spawn,		SHCMD("displayselect") },
 	{ MODKEY,			XK_F4,		spawn,		SHCMD("dmenuscripts") },
 	{ MODKEY,			XK_F5,		spawn,		SHCMD("keyboard -t") },
 	{ MODKEY,			XK_F6,		spawn,		SHCMD("torwrap") },
 	{ MODKEY,			XK_F7,		spawn,		SHCMD("td-toggle") },
-	{ MODKEY,			XK_F8,		spawn,		SHCMD("mailsync") },
-	{ MODKEY,			XK_F9,		spawn,		SHCMD("dmenumount") },
-	{ MODKEY,			XK_F10,		spawn,		SHCMD("dmenuumount") },
-	{ MODKEY,			XK_F11,		spawn,		SHCMD("mpv --no-cache --no-osc --no-input-default-bindings --input-conf=/dev/null --title=webcam $(ls /dev/video[0,2,4,6,8] | tail -n 1)") },
-	{ MODKEY,			XK_F12,		spawn,		SHCMD("dmenurecord") },
+	{ MODKEY,			XK_F8,		spawn,		SHCMD("dmenumount") },
+	{ MODKEY,			XK_F9,		spawn,		SHCMD("dmenuumount") },
+	{ MODKEY,			XK_F10,		spawn,		SHCMD("playerctl --player spotifyd previous") },
+	{ MODKEY,			XK_F11,		spawn,		SHCMD("playerctl --player spotifyd play-pause") },
+	{ MODKEY,			XK_F12,		spawn,		SHCMD("playerctl --player spotifyd next") },
 
 	{ MODKEY,			XK_space,	zoom,		{0} },
 	{ MODKEY|ShiftMask,		XK_space,	togglefloating,	{0} },
