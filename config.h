@@ -142,7 +142,7 @@ static Key keys[] = {
 	{ MODKEY,			XK_o,		incnmaster,     {.i = +1 } },
 	{ MODKEY|ShiftMask,		XK_o,		incnmaster,     {.i = -1 } },
 	{ MODKEY,			XK_p,			spawn,		SHCMD("mpc toggle") },
-	{ MODKEY|ShiftMask,		XK_p,			spawn,		SHCMD("mpc pause ; pauseallmpv") },
+	{ MODKEY|ShiftMask,		XK_p,			spawn,		SHCMD("mpc pause ; pauseallmpv ; playerctl --player spotifyd play-pause") },
 	{ MODKEY,			XK_bracketleft,		spawn,		SHCMD("mpc seek -10") },
 	{ MODKEY|ShiftMask,		XK_bracketleft,		spawn,		SHCMD("mpc seek -60") },
 	{ MODKEY,			XK_bracketright,	spawn,		SHCMD("mpc seek +10") },
@@ -199,7 +199,7 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,		XK_Page_Down,	shifttag,	{ .i = +1 } },
 	{ MODKEY,			XK_Insert,	spawn,		SHCMD("notify-send \"📋 Clipboard contents:\" \"$(xclip -o -selection clipboard)\"") },
 
-	{ MODKEY,			XK_F1,		spawn,		SHCMD("dmenumanuals") },
+	{ MODKEY,			XK_F1,		spawn,		SHCMD("groff -mom ~/.local/src/dwm/dwm.mom -Tpdf | zathura -") },
 	{ MODKEY,			XK_F2,		spawn,		SHCMD("reloaddwm") },
 	{ MODKEY,			XK_F3,		spawn,		SHCMD("displayselect") },
 	{ MODKEY,			XK_F4,		spawn,		SHCMD("dmenuscripts") },
@@ -217,10 +217,10 @@ static Key keys[] = {
 
 	{ 0,				XK_Print,	spawn,		SHCMD("maim pic-full-$(date '+%y%m%d-%H%M-%S').png") },
 	{ ShiftMask,			XK_Print,	spawn,		SHCMD("maimpick") },
-	{ MODKEY,			XK_Print,	spawn,		SHCMD("dmenurecord") },
-	{ MODKEY|ShiftMask,		XK_Print,	spawn,		SHCMD("dmenurecord kill") },
-	{ MODKEY,			XK_Delete,	spawn,		SHCMD("dmenurecord kill") },
-	{ MODKEY,			XK_Scroll_Lock,	spawn,		SHCMD("killall screenkey || screenkey &") },
+	/* { MODKEY,			XK_Print,	spawn,		SHCMD("dmenurecord") }, */
+	/* { MODKEY|ShiftMask,		XK_Print,	spawn,		SHCMD("dmenurecord kill") }, */
+	/* { MODKEY,			XK_Delete,	spawn,		SHCMD("dmenurecord kill") }, */
+	/* { MODKEY,			XK_Scroll_Lock,	spawn,		SHCMD("killall screenkey || screenkey &") }, */
 
 	{ 0, XF86XK_AudioMute,		spawn,		SHCMD("pamixer -t; kill -44 $(pidof dwmblocks)") },
 	{ 0, XF86XK_AudioRaiseVolume,	spawn,		SHCMD("pamixer --allow-boost -i 3; kill -44 $(pidof dwmblocks)") },
@@ -247,8 +247,8 @@ static Key keys[] = {
 	{ 0, XF86XK_TouchpadOn,		spawn,		SHCMD("synclient TouchpadOff=0") },
 	{ 0, XF86XK_MonBrightnessUp,	spawn,		SHCMD("xbacklight -inc 15") },
 	{ 0, XF86XK_MonBrightnessDown,	spawn,		SHCMD("xbacklight -dec 15") },
-	{ MODKEY|ControlMask,		XK_comma,  cyclelayout,    {.i = -1 } },
-	{ MODKEY|ControlMask,           XK_period, cyclelayout,    {.i = +1 } },
+	/* { MODKEY|ControlMask,		XK_comma,  cyclelayout,    {.i = -1 } }, */
+	/* { MODKEY|ControlMask,           XK_period, cyclelayout,    {.i = +1 } }, */
 };
 
 /* button definitions */
