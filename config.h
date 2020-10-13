@@ -132,22 +132,22 @@ static Key keys[] = {
 	{ MODKEY,			XK_w,		spawn,		SHCMD("$BROWSER") },
 	{ MODKEY|ShiftMask,		XK_w,		spawn,		SHCMD(TERMINAL " -e nmtui") },
 	{ MODKEY,			XK_e,		spawn,		SHCMD("vpn --toggle") },
-	{ MODKEY|ShiftMask,		XK_e,		spawn,		SHCMD(TERMINAL " -e abook -C ~/.config/abook/abookrc --datafile ~/.config/abook/addressbook") },
+	{ MODKEY|ShiftMask,		XK_e,		spawn,		SHCMD(TERMINAL " -e htop") },
 	{ MODKEY,			XK_r,		spawn,		SHCMD(TERMINAL " -e lf") },
-	{ MODKEY|ShiftMask,		XK_r,		spawn,		SHCMD(TERMINAL " -e htop") },
+	{ MODKEY|ShiftMask,		XK_r,		spawn,		SHCMD("st -e ranger") },
 	{ MODKEY,			XK_t,		spawn,		SHCMD(TERMINAL " -e cointop") },
 	{ MODKEY, 			XK_y,		cyclelayout,    {.i = +1 } },
 	{ MODKEY,			XK_u,		togglescratch,	{.ui = 0}},
 	{ MODKEY,			XK_i,		spawn,		SHCMD("Obsidian.AppImage") },
 	{ MODKEY,			XK_o,		incnmaster,     {.i = +1 } },
 	{ MODKEY|ShiftMask,		XK_o,		incnmaster,     {.i = -1 } },
-	{ MODKEY,			XK_p,			spawn,		SHCMD("mpc toggle") },
-	{ MODKEY|ShiftMask,		XK_p,			spawn,		SHCMD("mpc pause ; pauseallmpv ; playerctl --player spotifyd play-pause") },
-	{ MODKEY,			XK_bracketleft,		spawn,		SHCMD("mpc seek -10") },
-	{ MODKEY|ShiftMask,		XK_bracketleft,		spawn,		SHCMD("mpc seek -60") },
-	{ MODKEY,			XK_bracketright,	spawn,		SHCMD("mpc seek +10") },
-	{ MODKEY|ShiftMask,		XK_bracketright,	spawn,		SHCMD("mpc seek +60") },
-	{ MODKEY,			XK_backslash,		view,		{0} },
+	{ MODKEY,			XK_p,		spawn,		SHCMD("mpc toggle") },
+	{ MODKEY|ShiftMask,		XK_p,		spawn,		SHCMD("mpc pause ; pauseallmpv ; playerctl --player spotifyd play-pause") },
+	{ MODKEY,			XK_bracketleft,		spawn,	SHCMD("mpc seek -10") },
+	{ MODKEY|ShiftMask,		XK_bracketleft,		spawn,	SHCMD("mpc seek -60") },
+	{ MODKEY,			XK_bracketright,	spawn,	SHCMD("mpc seek +10") },
+	{ MODKEY|ShiftMask,		XK_bracketright,	spawn,	SHCMD("mpc seek +60") },
+	{ MODKEY,			XK_backslash,		view,	{0} },
 
 	{ MODKEY,			XK_a,		spawn,		SHCMD(TERMINAL " -e pulsemixer") },
 	{ MODKEY|ShiftMask,		XK_a,		spawn,		SHCMD("pavucontrol") },
@@ -247,8 +247,6 @@ static Key keys[] = {
 	{ 0, XF86XK_TouchpadOn,		spawn,		SHCMD("synclient TouchpadOff=0") },
 	{ 0, XF86XK_MonBrightnessUp,	spawn,		SHCMD("xbacklight -inc 15") },
 	{ 0, XF86XK_MonBrightnessDown,	spawn,		SHCMD("xbacklight -dec 15") },
-	/* { MODKEY|ControlMask,		XK_comma,  cyclelayout,    {.i = -1 } }, */
-	/* { MODKEY|ControlMask,           XK_period, cyclelayout,    {.i = +1 } }, */
 };
 
 /* button definitions */
