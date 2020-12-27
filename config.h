@@ -1,7 +1,7 @@
 /* See LICENSE file for copyright and license details. */
 
 /* Default terminal emulator */
-#define TERMINAL "st"
+#define TERMINAL "alacritty"
 
 /* appearance */
 static const unsigned int borderpx  = 3;        /* border pixel of windows */
@@ -43,7 +43,7 @@ const char *spcmd2[] = {"st", "-n", "spcalc", "-f", "monospace:size=16", "-g", "
 static Sp scratchpads[] = {
 	/* name          cmd  */
 	{"spterm",      spcmd1},
-	{"spranger",    spcmd2},
+	{"spcalc",    spcmd2},
 };
 
 /* tagging */
@@ -59,6 +59,7 @@ static const Rule rules[] = {
 	{ "discord",  NULL,       NULL,          1 << 6,       0,           0,         0,        -1 },
 	{ "Gpick",    NULL,       NULL,       	    0,       	  1,           0,         0,        -1 },
 	{ "Pavucontrol",    NULL,       NULL,       	    0,       	  1,           0,         0,        -1 },
+    { "stalonetray",    NULL,       NULL,       	    0,       	  1,           0,         0,        -1 },
 	{ "st-256color",    NULL,     NULL,           	    0,            0,           1,         0,        -1 },
 	{ "St",       NULL,     NULL,           	    0,            0,           1,         0,        -1 },
 	{ "Alacritty",NULL,     NULL,           	    0,            0,           1,         0,        -1 },
@@ -132,18 +133,19 @@ static Key keys[] = {
 	{ MODKEY,			XK_q,		killclient,	{0} },
 	{ MODKEY,			XK_w,		spawn,		SHCMD("$BROWSER") },
 	{ MODKEY|ShiftMask,	XK_w,		spawn,		SHCMD(TERMINAL " -e nmtui") },
-	{ MODKEY,			XK_e,		spawn,		SHCMD("vpn --toggle") },
-	{ MODKEY|ShiftMask,	XK_e,		spawn,		SHCMD(TERMINAL " -e htop") },
+	{ MODKEY,			XK_e,		spawn,		SHCMD(TERMINAL " -e htop") },
+	{ MODKEY|ShiftMask,	XK_e,		spawn,		SHCMD("vpn --toggle") },
 	{ MODKEY,			XK_r,		spawn,		SHCMD(TERMINAL " -e lf") },
 	{ MODKEY|ShiftMask,	XK_r,		spawn,		SHCMD("st -e ranger") },
-	{ MODKEY,			XK_t,		spawn,		SHCMD(TERMINAL " -e cointop") },
+	/* { MODKEY,			XK_t,		spawn,		SHCMD(TERMINAL " -e cointop") }, */
 	{ MODKEY, 			XK_y,		cyclelayout,   {.i = +1 } },
 	{ MODKEY,			XK_u,		togglescratch,	{.ui = 0}},
-	{ MODKEY,			XK_i,		spawn,		SHCMD("Obsidian.AppImage") },
+	{ MODKEY,			XK_i,		spawn,		SHCMD("toggcomp") },
+    { MODKEY|ShiftMask,	XK_i,		spawn,		SHCMD("bl") },
 	{ MODKEY,			XK_o,		incnmaster,     {.i = +1 } },
 	{ MODKEY|ShiftMask,	XK_o,		incnmaster,     {.i = -1 } },
 	{ MODKEY,			XK_p,		spawn,		SHCMD("mpc toggle") },
-	{ MODKEY|ShiftMask,	XK_p,		spawn,		SHCMD("mpc pause ; pauseallmpv ; playerctl --player spotifyd play-pause") },
+	{ MODKEY|ShiftMask,	XK_p,		spawn,		SHCMD("mpc pause ; pauseallmpv") },
 	{ MODKEY,			XK_bracketleft,		spawn,	SHCMD("mpc seek -10") },
 	{ MODKEY|ShiftMask,	XK_bracketleft,		spawn,	SHCMD("mpc seek -60") },
 	{ MODKEY,			XK_bracketright,	spawn,	SHCMD("mpc seek +10") },
@@ -162,7 +164,7 @@ static Key keys[] = {
 	{ MODKEY,			XK_h,		setmfact,	{.f = -0.05} },
 	/* J and K are automatically bound above in STACKEYS */
 	{ MODKEY,			XK_l,		setmfact,   {.f = +0.05} },
-	{ MODKEY|ShiftMask,	XK_l,		spawn,      SHCMD("keyboard -t") },
+	/* { MODKEY|ShiftMask,	XK_l,		spawn,      SHCMD("keyboard -t") }, */
 	{ MODKEY,			XK_semicolon,	shiftview,	{ .i = 1 } },
 	{ MODKEY|ShiftMask,	XK_semicolon,	shifttag,	{ .i = 1 } },
 	{ MODKEY,			XK_apostrophe,	togglescratch,	{.ui = 1} },
@@ -198,26 +200,25 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,	XK_Page_Up,	shifttag,	{ .i = -1 } },
 	{ MODKEY,			XK_Page_Down,shiftview,	{ .i = +1 } },
 	{ MODKEY|ShiftMask,	XK_Page_Down,shifttag,	{ .i = +1 } },
-	{ MODKEY,			XK_Insert,	spawn,		SHCMD("notify-send \"📋 Clipboard contents:\" \"$(xclip -o -selection clipboard)\"") },
-
+	{ MODKEY,			XK_Insert,	spawn,		SHCMD("dmenuhistory") },
 	{ MODKEY,			XK_F1,		spawn,		SHCMD("groff -mom ~/.local/src/dwm/dwm.mom -Tpdf | zathura -") },
 	{ MODKEY,			XK_F2,		spawn,		SHCMD("reloaddwm") },
-	{ MODKEY,			XK_F3,		spawn,		SHCMD("displayselect") },
+	{ MODKEY,			XK_F3,		spawn,		SHCMD("dmenudisplay") },
 	{ MODKEY,			XK_F4,		spawn,		SHCMD("dmenuscripts") },
 	{ MODKEY,			XK_F5,		spawn,		SHCMD("keyboard -t") },
 	{ MODKEY,			XK_F6,		spawn,		SHCMD("torwrap") },
 	{ MODKEY,			XK_F7,		spawn,		SHCMD("td-toggle") },
 	{ MODKEY,			XK_F8,		spawn,		SHCMD("dmenumount") },
 	{ MODKEY,			XK_F9,		spawn,		SHCMD("dmenuumount") },
-	{ MODKEY,			XK_F10,		spawn,		SHCMD("playerctl --player spotifyd previous") },
-	{ MODKEY,			XK_F11,		spawn,		SHCMD("playerctl --player spotifyd play-pause") },
-	{ MODKEY,			XK_F12,		spawn,		SHCMD("playerctl --player spotifyd next") },
+	{ MODKEY,			XK_F10,		spawn,		SHCMD("bl") },
+	{ MODKEY,			XK_F11,		spawn,		SHCMD("stalonetray -c ~/.config/stalonetrayrc/config") },
+	/* { MODKEY,			XK_F12,		spawn,		SHCMD("playerctl --player spotifyd next") }, */
 
 	{ MODKEY,			XK_space,	zoom,		{0} },
 	{ MODKEY|ShiftMask,	XK_space,	togglefloating,	{0} },
 
-	{ 0,				XK_Print,	spawn,		SHCMD("maim pic-full-$(date '+%y%m%d-%H%M-%S').png") },
-	{ ShiftMask,		XK_Print,	spawn,		SHCMD("maimpick") },
+	{ 0,				XK_Print,	spawn,		SHCMD("flameshot gui -p ~") },
+	{ ShiftMask,		XK_Print,	spawn,		SHCMD("maim pic-full-$(date '+%y%m%d-%H%M-%S').png") },
 	/* { MODKEY,			XK_Print,	spawn,		SHCMD("dmenurecord") }, */
 	/* { MODKEY|ShiftMask,		XK_Print,	spawn,		SHCMD("dmenurecord kill") }, */
 	/* { MODKEY,			XK_Delete,	spawn,		SHCMD("dmenurecord kill") }, */
