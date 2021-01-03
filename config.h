@@ -214,9 +214,9 @@ static Key keys[] = {
 	{ MODKEY,			XK_F11,		spawn,		SHCMD("stalonetray -c ~/.config/stalonetrayrc/config") },
 	/* { MODKEY,			XK_F12,		spawn,		SHCMD("playerctl --player spotifyd next") }, */
 
-	/* { MODKEY,			XK_space,	zoom,		{0} }, */
-	{ MODKEY,			XK_space,	spawn,      SHCMD("keyboard -t") },
-	{ MODKEY|ShiftMask,	XK_space,	togglefloating,	{0} },
+	{ MODKEY,			XK_space,	zoom,		{0} },
+	{ MODKEY|ShiftMask,			XK_space,	spawn,      SHCMD("keyboard -t") },
+	/* { MODKEY|ShiftMask,	XK_space,	togglefloating,	{0} }, */
 
 	{ 0,				XK_Print,	spawn,		SHCMD("flameshot gui -p ~") },
 	{ ShiftMask,		XK_Print,	spawn,		SHCMD("maim pic-full-$(date '+%y%m%d-%H%M-%S').png") },
