@@ -219,7 +219,7 @@ static Key keys[] = {
 	/* { MODKEY|ShiftMask,	XK_space,	togglefloating,	{0} }, */
 
 	{ 0,				XK_Print,	spawn,		SHCMD("flameshot gui -p ~") },
-	{ ShiftMask,		XK_Print,	spawn,		SHCMD("maim pic-full-$(date '+%y%m%d-%H%M-%S').png") },
+	{ ShiftMask,		XK_Print,	spawn,		SHCMD("flameshot full -p ~") },
 	/* { MODKEY,			XK_Print,	spawn,		SHCMD("dmenurecord") }, */
 	/* { MODKEY|ShiftMask,		XK_Print,	spawn,		SHCMD("dmenurecord kill") }, */
 	/* { MODKEY,			XK_Delete,	spawn,		SHCMD("dmenurecord kill") }, */
