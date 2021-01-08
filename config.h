@@ -1,7 +1,7 @@
 /* See LICENSE file for copyright and license details. */
 
 /* Default terminal emulator */
-#define TERMINAL "st"
+#define TERMINAL "alacritty"
 
 /* appearance */
 static const unsigned int borderpx  = 3;        /* border pixel of windows */
