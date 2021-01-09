@@ -70,7 +70,6 @@ static const Rule rules[] = {
 	{ "discord",  NULL,       NULL,          1 << 6,       0,           0,         0,        -1 },
 	{ "Gpick",    NULL,       NULL,       	    0,       	  1,           0,         0,        -1 },
 	{ "Pavucontrol",    NULL,       NULL,       	    0,       	  1,           0,         0,        -1 },
-    { "stalonetray",    NULL,       NULL,       	    0,       	  1,           0,         0,        -1 },
 	{ "st-256color",    NULL,     NULL,           	    0,            0,           1,         0,        -1 },
 	{ "St",       NULL,     NULL,           	    0,            0,           1,         0,        -1 },
 	{ "Alacritty",NULL,     NULL,           	    0,            0,           1,         0,        -1 },
@@ -223,7 +222,7 @@ static Key keys[] = {
 	{ MODKEY,			XK_F8,		spawn,		SHCMD("dmenumount") },
 	{ MODKEY,			XK_F9,		spawn,		SHCMD("dmenuumount") },
 	{ MODKEY,			XK_F10,		spawn,		SHCMD("bl") },
-	{ MODKEY,			XK_F11,		spawn,		SHCMD("stalonetray -c ~/.config/stalonetrayrc/config") },
+	/* { MODKEY,			XK_F11,		spawn,		SHCMD("") }, */
 	/* { MODKEY,			XK_F12,		spawn,		SHCMD("playerctl --player spotifyd next") }, */
 
 	{ MODKEY,			XK_space,	zoom,		{0} },
