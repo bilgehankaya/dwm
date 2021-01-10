@@ -225,8 +225,8 @@ static Key keys[] = {
 	/* { MODKEY,			XK_F11,		spawn,		SHCMD("") }, */
 	/* { MODKEY,			XK_F12,		spawn,		SHCMD("playerctl --player spotifyd next") }, */
 
-	/* { MODKEY,			XK_space,	zoom,		{0} }, */
-    { MODKEY,			XK_space,	spawn,		SHCMD("keyboard -t") },
+	{ MODKEY,			XK_space,	zoom,		{0} },
+    /* { MODKEY,			XK_space,	spawn,		SHCMD("keyboard -t") }, */
 	{ MODKEY|ShiftMask,			XK_space,	spawn,      SHCMD("keyboard -t") },
 	/* { MODKEY|ShiftMask,	XK_space,	togglefloating,	{0} }, */
 
