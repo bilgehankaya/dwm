@@ -18,15 +18,8 @@ static const int swallowfloating    = 0;        /* 1 means swallow floating wind
 static const int smartgaps          = 0;        /* 1 means no outer gap when there is only one window */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
-/* static const char *fonts[]          = { */
-/* 	"JetBrains Mono Medium:pixelsize=14:antialias=true:autohint=true", */
-/* 	"JoyPixels:pixelsize=11:antialias=true:autohint=true", */
-/* 	/1* "FontAwesome5Free:pixelsize=12:antialias=true:autohint=true", *1/ */
-/* 	/1* "FontAwesome5Brands:pixelsize=14:antialias=true:autohint=true", *1/ */
-/* 	"FontAwesome5Free:style=Solid:pixelsize=12:antialias=true:autohint=true" */
-/* }; */
 static const char *fonts[]          = {
-	"Fira Mono Medium:pixelsize=16:antialias=true:autohint=true",
+	"JetBrainsMonoMedium:pixelsize=16:antialias=true:autohint=true",
 	"JoyPixels:pixelsize=11:antialias=true:autohint=true",
 	/* "FontAwesome5Free:pixelsize=12:antialias=true:autohint=true", */
 	/* "FontAwesome5Brands:pixelsize=14:antialias=true:autohint=true", */
