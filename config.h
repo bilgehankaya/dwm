@@ -209,7 +209,7 @@ static Key keys[] = {
 	{ MODKEY,			XK_F2,		spawn,		SHCMD("reloaddwm") },
 	{ MODKEY,			XK_F3,		spawn,		SHCMD("dmenudisplay") },
 	{ MODKEY,			XK_F4,		spawn,		SHCMD("dmenuscripts") },
-	{ MODKEY,			XK_F5,		spawn,		SHCMD("bootstrap") },
+	{ MODKEY,			XK_F5,		spawn,		SHCMD("timercontrol -r") },
     /* { MODKEY,			XK_F5,		spawn,		SHCMD("keyboard -t") }, */
 	{ MODKEY,			XK_F6,		spawn,		SHCMD("torwrap") },
 	{ MODKEY,			XK_F7,		spawn,		SHCMD("td-toggle") },
