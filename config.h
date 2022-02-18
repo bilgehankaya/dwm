@@ -23,7 +23,9 @@ static const char *fonts[]          = {
 	"JoyPixels:pixelsize=13:antialias=true:autohint=true",
 	/* "FontAwesome5Free:pixelsize=12:antialias=true:autohint=true", */
 	/* "FontAwesome5Brands:pixelsize=14:antialias=true:autohint=true", */
-	"FontAwesome5Free:style=Solid:pixelsize=14:antialias=true:autohint=true"
+	"FontAwesome5Free:style=Solid:pixelsize=14:antialias=true:autohint=true",
+	"fontawesome-regular:style=Solid:pixelsize=16:antialias=true:autohint=true",
+
 };
 static char dmenufont[]             = "JetBrainsMono:size=12:style=Medium";
 static char normbgcolor[]           = "#000000";
